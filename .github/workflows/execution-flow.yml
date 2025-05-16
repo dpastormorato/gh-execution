@@ -69,5 +69,5 @@ jobs:
     with:
       artifact-name: dist-files
     secrets:
-      my-secret: ${{ secrets.my_secret }}
+      my-secret: ${{ secrets.MY_SECRET }}
 
