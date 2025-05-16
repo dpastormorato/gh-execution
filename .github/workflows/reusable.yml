@@ -22,5 +22,5 @@ jobs:
     - name: List my files
       run: ls
     - name: Output information
-      run: echo "My secret is ${{ secrets.MY_SECRET}}"
+      run: echo "My secret is ::add-mask::${{ secrets.MY_SECRET }}"
 
