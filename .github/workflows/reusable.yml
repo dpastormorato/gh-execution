@@ -7,6 +7,10 @@ on:
         required: false
         default: dist
         type: string
+    secrets:
+      my-secret:
+        required: true
+
 jobs:
   deploy:
     runs-on: ubuntu-latest
@@ -18,5 +22,5 @@ jobs:
     - name: List my files
       run: ls
     - name: Output information
-      run: echo "Deploying & uploading reusable code ..."
+      run: echo "My secret is" + ${{ secrets.my_secret}}
 
