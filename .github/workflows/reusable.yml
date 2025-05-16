@@ -22,5 +22,5 @@ jobs:
     - name: List my files
       run: ls
     - name: Output information
-      run: echo "My secret is" + ${{ secrets.my_secret}}
+      run: echo "My secret is ${{ secrets.my_secret}}"
 
