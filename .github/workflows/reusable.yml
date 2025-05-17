@@ -7,12 +7,17 @@ on:
         required: false
         default: dist
         type: string
-    secrets:
-      my-secret:
-        required: true
-
+    # secrets:
+    #   my-secret:
+    #     required: true
+    outputs:
+      results:
+        description: The result of the deployment operation
+        value: ${{ jobs.deploy.outputs.outcome }}
 jobs:
   deploy:
+    outputs:
+      outcome: ${{ steps.set-result.outputs.step-result }}
     runs-on: ubuntu-latest
     steps:
     - name: Get Code
@@ -21,6 +26,8 @@ jobs:
         name: ${{ inputs.artifact-name }}
     - name: List my files
       run: ls
-    - name: Output information
-      run: echo "My secret is ::add-mask::${{ secrets.MY_SECRET }}"
-
+    # - name: Output information
+    #   run: echo "My secret is ::add-mask::${{ secrets.MY_SECRET }}"
+    - name: Set result output
+      id: set-result
+      run: echo "step-result=success" >> $GITHUB_OUTPUT
